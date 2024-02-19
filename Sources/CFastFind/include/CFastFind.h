@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include <device/device_types.h>
 #include <CoreFoundation/CoreFoundation.h>
+#include "iokit.h"
 
 bool CFastFind(const void* __nonnull buffer, size_t bufLen, const uint32_t* __nonnull insts, size_t instLen, size_t* __nonnull offset);
 
@@ -33,10 +34,5 @@ uint64_t find_xref_to_data(const void * __nonnull start, const void * __nonnull 
 uint64_t find_xref_branch(const void * __nonnull start, const void * __nonnull end, uint64_t xrefTo, uint64_t pc);
 
 // Also define some IOKit stuff...
-extern const mach_port_t kIOMasterPortDefault;
-
-extern mach_port_t IORegistryEntryFromPath(mach_port_t mainPort, const io_string_t __nonnull path);
-extern CFTypeRef __nullable IORegistryEntryCreateCFProperty(mach_port_t entry, CFStringRef __nonnull key, CFAllocatorRef __nullable allocator, uint32_t options);
-extern kern_return_t IOObjectRelease(mach_port_t object);
 
 #endif /* CFastFind_h */
